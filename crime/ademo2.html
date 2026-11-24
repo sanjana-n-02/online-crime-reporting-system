@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Crime Reporting System</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;900&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: '', serif;
+    
+        }
+        header {
+            width: 100%;
+            background-color: #003366;
+        }
+        .row1 {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 20px;
+            background: white;
+            flex-wrap: wrap;
+        }
+        
+        .col1 img {
+    height: 150px; /* Set fixed height */
+    width: 45 0px; /* Set fixed width */
+    object-fit: contain; /* Ensures image scales properly */
+    right:20px;
+    bottom:10px;
+    position: relative;
+        }
+        .col2 h1 {
+            font-size: 40px;
+            color: #dc3545;
+            text-align: center;
+            bottom:10px;
+            right:65px;
+            position: relative;
+        }
+        .nav-toggle {
+            display: none;
+            font-size: 24px;
+            color: white;
+            cursor: pointer;
+            padding: 10px;
+            
+        }
+        .row2 {
+            background-color: #003366;
+            text-align: center;
+            bottom:14px;
+            position: relative;
+            margin-top: -5px; /* Lift row2 closer to row1 */
+        }
+        .nav-menu {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            
+        
+        }
+        .nav-menu li {
+            padding: 4px  43px;
+            position: relative;
+        }
+        .nav-menu li a {
+            color: white;
+            text-transform: uppercase;
+            text-decoration: none;
+            top:8px;
+            position: relative;
+            font-size: 24px;
+        }
+        .nav-menu li a:hover {
+            color: grey;
+        }
+        
+        .dropdown {
+    position: relative;
+    bottom: 1px;
+    display: inline-block;
+}
+
+
+.dropdown-menu {
+    display: none; /* Initially hidden */
+    position: absolute;
+    background-color: white;
+    min-width: 150px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    padding: 0;
+    z-index: 1000;
+    list-style: none;
+    flex-direction: column; /* Aligns items in column */
+    top:40px;
+    
+}
+
+.dropdown-menu li {
+    padding: 10px;
+    text-align: left;
+}
+
+.dropdown-menu li a {
+    text-decoration: none;
+    color: white; /* Same as first version */
+    display: block;
+    background-color:#003366 ; /* Added to match first version */
+    padding: 10px;
+}
+
+.dropdown-menu li a:hover {
+    background: #4a4949; /* Darker shade for hover effect */
+}
+
+/* Show dropdown on hover or when focused */
+.dropdown:hover .dropdown-menu,
+.dropdown:focus-within .dropdown-menu {
+    display: flex;
+}
+
+        @media screen and (max-width: 768px) {
+            .row1 {
+                flex-direction: column;
+                text-align: center;
+            }
+            .col1 img {
+                max-height: 150px;
+            }
+            .col2 h1 {
+                font-size: 20px;
+            }
+            .nav-toggle {
+                display: block;
+                text-align: center;
+                background: #003366;
+                padding: 10px;
+            }
+            .nav-menu {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                text-align: center;
+                gap: 0;
+            }
+            .nav-menu.active {
+                display: flex;
+            }
+            .nav-menu li {
+                padding: 10px;
+                border-bottom: 1px solid white;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="row1">
+            <div class="col1">
+                <img src="images/crime4.jpg" alt="Crime Logo">
+            </div>
+            <div class="col2">
+                <h1>ONLINE CRIME REPORTING SYSTEM</h1>
+            </div>
+        </div>
+        <div class="nav-toggle" onclick="toggleMenu()">
+            ☰ Menu
+        </div>
+        <div class="row2">
+            <ul class="nav-menu">
+                <li><a href="home-main.php">Home</a></li>
+                <li><a href="crimereport1.php">Report Crime</a></li>
+                <li class="dropdown">
+                    <a href="#">Case Status ▼</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="case_status_user.php">User</a></li>
+                        <li><a href="case_status_officer.php">Officer</a></li>
+                    </ul>
+                </li>
+                <li><a href="contactus.php">Contact Us</a></li>
+                <li><a href="userlogin.php">User Login</a></li>
+                <li><a href="officerlogin1.php">Officer Login</a></li>
+            </ul>
+        </div>
+    </header>
+    
+    <script>
+        function toggleMenu() {
+            document.querySelector(".nav-menu").classList.toggle("active");
+        }
+    </script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const currentPage = window.location.pathname.split('/').pop(); // Get current page file name
+            const menuItems = document.querySelectorAll(".nav-menu li a");
+    
+            menuItems.forEach(item => {
+                if (item.getAttribute("href") === currentPage) {
+                    item.classList.add("active"); // Add active class to matching menu item
+                }
+            });
+        });
+    </script>
+    
+    
+</body>
+</html>

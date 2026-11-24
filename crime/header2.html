@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=arrow_forward" />
+    
+    <style>
+        .dropdown {
+            position: relative;
+            bottom:1px;
+            display: inline-block;
+        }
+        
+        .dropdown-menu {
+            display: flex;
+            display: none;
+            position: absolute;
+            background-color: white;
+            min-width: 150px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+            padding: 0;
+            z-index: 1000;
+            list-style: none;
+        }
+
+        .dropdown-menu li {
+            padding: 10px;
+            text-align: left;
+        }
+
+        .dropdown-menu li a {
+            text-decoration: none;
+            color: white;
+            display: block;
+        }
+
+        .dropdown:hover .dropdown-menu {
+            display: block;
+        }
+        *{
+    margin:0;
+    padding:0;
+}
+    header{
+    height:200px;
+    width:100%;
+}
+.row1{
+    height:150px;
+    width:100%;
+    
+}
+.col1{
+    height:150px;
+    width:50%;
+    float:left;
+}
+.col1 img{
+    height:150px;
+    right:6px;
+    
+
+    
+    position: relative;
+}
+.col2{
+    height:150px;
+    width:50%;
+    float:right;
+}
+.col2 h1{
+    font-style: normal;
+    color:#dc3545;
+    font-size:40px;
+    right:150px;
+    top:54px;
+    text-align: center;
+    position: relative;
+}
+.row2{
+    height:50px;
+    width:100%;
+    top:9px;
+    position:relative;
+    background-color: #003366;
+    
+    
+    
+
+}
+
+   
+ol li{
+    display: inline;
+    padding:3%;
+
+}
+ol li a{
+    font-size: 24px;
+    text-decoration: none;
+    text-transform: uppercase;
+    background-color:#003366;
+    color:white;
+    bottom:35px;
+    position: relative;
+    
+
+}
+
+
+
+ol li a:hover{
+      color:grey;
+}
+
+    
+    </style>
+</head>
+<body>
+    <header>
+        <div class="row1">
+            <div class="col1">
+                <img src="images/crime4.jpg" height="190px" alt="">
+            </div>
+            <div class="col2">
+                <h1>ONLINE CRIME REPORTING SYSTEM</h1>
+            </div>
+        </div>
+        <div class="row2">
+            <ol>
+                <li><a href="home-main.php">home</a></li>
+                <li><a href="crimereport1.php">report crime</a></li>
+                <li class="dropdown">
+                    <a href="#">case status ▼</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="case_status_user.php">User</a></li>
+                        <li><a href="case_status_officer.php">Officer</a></li>
+                    </ul>
+                </li>
+                <li><a href="contactus.php">Contact Us</a></li>
+                <li><a href="userlogin.php">user login</a></li>
+                <li><a href="officerlogin1.php">officer login</a></li>
+            </ol>
+        </div>
+    </header>
+    
+</body>
+</html>
+

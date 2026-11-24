@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Horizontal Footer Example</title>
+    <!-- Font Awesome for Social Media Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- External CSS -->
+    <style>
+        *{
+    margin:0;
+    padding:0;
+}
+/* Footer Styles */
+
+.footer {
+    background-color: #003366; /* Dark background */
+    color: #ecf0f1; /* Light text color */
+    height:210px;
+    padding: 1px 0;
+}
+
+.footer .container {
+    display: flex; /* Enables horizontal layout */
+    justify-content: space-between; /* Distribute sections evenly */
+    align-items: flex-start; /* Align sections at the top */
+    max-width: 1200px; /* Center the footer content */
+    margin: 0 auto;
+    bottom:10px;
+    top:40px;
+    position: relative;
+}
+
+.footer .footer-section {
+    flex: 1; /* Sections take equal width */
+    text-align: center; /* Center text in each section */
+    margin: 0 10px; /* Add spacing between sections */
+}
+
+.footer h4 {
+    margin-bottom: 10px;
+    font-size: 25px;
+    color: #f39c12; /* Accent color */
+}
+
+.footer p, .footer a {
+    font-size: 18px;
+    color: #ecf0f1;
+    text-decoration: none;
+}
+
+.footer .social-links {
+    display: flex; /* Align icons horizontally */
+    justify-content: center; /* Center the icons */
+    gap: 22px; /* Space between icons */
+    top:10px;
+    position: relative;
+}
+
+.footer .social-links a {
+    font-size: 20px;
+    color: #ecf0f1;
+    transition: color 0.3s ease;
+}
+
+.footer .social-links a:hover {
+    color: #f39c12; /* Accent color on hover */
+}
+
+    </style>
+</head>
+<body>
+    <!-- Footer Section -->
+    <footer class="footer">
+        <div class="container">
+            <!-- Contact Information -->
+            <div class="footer-section">
+                <h4>Contact Us</h4>
+                <p>Email: support@crimereport.com</p>
+                <p>Phone: +1-234-567-890</p>
+                <p>Address: 123 Main Street, Chennai, India</p>
+            </div>
+            <!-- Social Media Links -->
+            <div class="footer-section">
+                <h4>Follow Us</h4>
+                <div class="social-links">
+                    <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook"></i></a>
+                    <a href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
+                    <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+        
+                </div>
+            </div>
+            <!-- Copyright Notice -->
+            <div class="footer-section">
+                <h4>Copyright</h4>
+                <p>&copy; 2025 Online Crime Reporting System. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

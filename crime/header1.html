@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style6.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Playfair Display', serif;
+        }
+        header {
+            width: 100%;
+            background-color: #003366;
+        }
+        .row1 {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: white;
+        }
+        .col1 img {
+    height: 150px; /* Set fixed height */
+    width: 500px; /* Set fixed width */
+    object-fit: contain; /* Ensures image scales properly */
+    right:16px;
+    position: relative;
+}
+
+        
+        .col2 h1 {
+            font-size: 39px;
+            color: #dc3545;
+            right:180px;
+            position: relative;
+            text-align: center;
+        }
+        .nav-toggle {
+            display: none;
+            font-size: 24px;
+            color: white;
+            cursor: pointer;
+        }
+        .row2 {
+            background-color: #003366;
+            text-align: center;
+        }
+        .nav-menu {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            gap: 90px;
+        }
+        .nav-menu li {
+            padding: 15px 20px;
+        }
+        .nav-menu li a {
+            color: white;
+            text-transform: uppercase;
+            text-decoration: none;
+            font-size: 21px;
+        }
+        .nav-menu li a:hover {
+            color: grey;
+        }
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            background: white;
+            list-style: none;
+            min-width: 150px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+            padding: 0;
+        }
+        .dropdown:hover .dropdown-menu,
+        .dropdown:focus-within .dropdown-menu {
+            display: block;
+        }
+        .dropdown-menu li {
+            padding: 10px;
+        }
+        .dropdown-menu li a {
+            color: black;
+            display: block;
+        }
+        .dropdown-menu li a:hover {
+            background: #f4f4f4;
+        }
+        @media screen and (max-width: 768px) {
+            .row1 {
+                flex-direction: column;
+                text-align: center;
+            }
+            .col1 img {
+                max-height: 300px;
+            }
+            .col2 h1 {
+                font-size: 20px;
+            }
+            .nav-toggle {
+                display: block;
+                text-align: center;
+                padding: 10px;
+                background: #003366;
+            }
+            .nav-menu {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                text-align: center;
+                gap: 0;
+            }
+            .nav-menu.active {
+                display: flex;
+            }
+            .nav-menu li {
+                padding: 10px;
+                border-bottom: 1px solid white;
+            }
+        }
+    
+    </style>
+
+</head>
+<body>
+    <header>
+        <div class="row1">
+            <div class="col1">
+                <img src="images/crime4.jpg" alt="Crime Logo">
+            </div>
+            <div class="col2">
+                <h1>ONLINE CRIME REPORTING SYSTEM</h1>
+            </div>
+        </div>
+        <div class="nav-toggle" onclick="toggleMenu()">
+            ☰ Menu
+        </div>
+        <div class="row2">
+            <ul class="nav-menu">
+                <li><a href="home-main.php">HOME</a></li>
+                <li><a href="crimereport1.php">REPORT CRIME</a></li>
+                <li class="dropdown">
+                    <a href="#">CASE STATUS ▼</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="case_status_user.php">USER</a></li>
+                        <li><a href="case_status_officer.php">OFFICER</a></li>
+                    </ul>
+                </li>
+                <li><a href="contactus.php">CONTACT US</a></li>
+                <li><a href="userlogin.php">USER LOGIN</a></li>
+                <li><a href="officerlogin1.php">OFFICER LOGIN</a></li>
+            </ul>
+        </div>
+    </header>
+    
+    <script>
+        function toggleMenu() {
+            document.querySelector(".nav-menu").classList.toggle("active");
+        }
+    </script>
+</body>
+</html>

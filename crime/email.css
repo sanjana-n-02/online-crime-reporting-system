@@ -1,0 +1,19 @@
+
+footer{
+    height:80px;
+    width:100%;
+    border-style:solid;
+    border-color: black;
+    background-color:#003366;
+    
+}
+p{
+    font-size:35px;
+    color:white;
+    text-align: Left;
+    bottom:15px;
+    left: 350px;
+    position:relative;
+   
+    
+}

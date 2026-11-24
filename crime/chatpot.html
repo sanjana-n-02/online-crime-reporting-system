@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Real-Time Crime Report Assistant</title>
+  <style>
+    /* Chatbot styles */
+    .chatbot {
+      position: fixed;
+      bottom: 10px;
+      right: 10px;
+      width: 300px;
+      height: 500px;
+      border: 1px solid #ccc;
+      box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+      background-color: white;
+      border-radius: 10px;
+    }
+    .chatbot-header {
+      background-color: #007BFF;
+      color: white;
+      padding: 10px;
+      border-top-left-radius: 10px;
+      border-top-right-radius: 10px;
+      text-align: center;
+    }
+    .chatbot-messages {
+      padding: 10px;
+      height: 350px;
+      overflow-y: auto;
+    }
+    .chatbot-input {
+      padding: 10px;
+      border-top: 1px solid #ccc;
+      display: flex;
+      align-items: center;
+    }
+    .chatbot-input input {
+      width: 70%;
+      padding: 5px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      margin-right: 10px;
+    }
+    .chatbot-input button {
+      width: 28%;
+      padding: 5px;
+      background-color: #007BFF;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .message {
+      padding: 10px;
+      margin: 10px 0;
+      border-radius: 5px;
+    }
+    .user-message {
+      background-color: #DCF8C6;
+      text-align: right;
+    }
+    .bot-message {
+      background-color: #E0E0E0;
+    }
+    .bot-response img, .bot-response video {
+      max-width: 100%;
+      border-radius: 5px;
+      margin-top: 10px;
+    }
+    .quick-replies {
+      display: flex;
+      flex-wrap: wrap;
+    }
+    .quick-reply {
+      background-color: #007BFF;
+      color: white;
+      padding: 5px 10px;
+      border-radius: 5px;
+      margin: 5px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body onload="botGreet()">
+
+<div class="chatbot">
+  <div class="chatbot-header">Crime Report Assistant</div>
+  <div class="chatbot-messages" id="chatbotMessages"></div>
+  <div class="chatbot-input">
+    <input type="text" id="chatbotInput" placeholder="Type a message...">
+    <button onclick="sendMessage()">Send</button>
+  </div>
+  <div id="quickReplies" class="quick-replies"></div>
+</div>
+
+<script src="https://cdn.socket.io/4.0.0/socket.io.min.js"></script>
+<script>
+  const socket = io('http://localhost:3000');
+
+  socket.on('botMessage', (msg) => {
+    const messages = document.getElementById('chatbotMessages');
+    const botMessage = document.createElement('div');
+    botMessage.className = 'message bot-message';
+    botMessage.innerHTML = formatBotResponse(msg);
+    messages.appendChild(botMessage);
+    messages.scrollTop = messages.scrollHeight;
+
+    // Display quick replies if available
+    displayQuickReplies(msg.quickReplies);
+  });
+
+  function sendMessage() {
+    const input = document.getElementById('chatbotInput');
+    const messages = document.getElementById('chatbotMessages');
+    const userMessage = document.createElement('div');
+    userMessage.className = 'message user-message';
+    userMessage.textContent = input.value;
+    messages.appendChild(userMessage);
+
+    socket.emit('userMessage', input.value);
+
+    input.value = '';
+  }
+
+  function formatBotResponse(response) {
+    let formattedResponse = response.text;
+    if (response.image) {
+      formattedResponse += `<div class="bot-response"><img src="${response.image}" alt="Image"></div>`;
+    }
+    if (response.video) {
+      formattedResponse += `<div class="bot-response"><video controls><source src="${response.video}" type="video/mp4"></video></div>`;
+    }
+    return formattedResponse;
+  }
+
+  function displayQuickReplies(replies) {
+    const quickReplies = document.getElementById('quickReplies');
+    quickReplies.innerHTML = '';
+    if (replies) {
+      replies.forEach(reply => {
+        const quickReply = document.createElement('div');
+        quickReply.className = 'quick-reply';
+        quickReply.textContent = reply;
+        quickReply.onclick = () => {
+          document.getElementById('chatbotInput').value = reply;
+          sendMessage();
+        };
+        quickReplies.appendChild(quickReply);
+      });
+    }
+  }
+
+  function botGreet() {
+    const messages = document.getElementById('chatbotMessages');
+    const botMessage = document.createElement('div');
+    botMessage.className = 'message bot-message';
+    botMessage.textContent = 'Hello! I am your Crime Report Assistant. How can I help you today?';
+    messages.appendChild(botMessage);
+
+    displayQuickReplies(['Report a crime', 'Check status', 'Get help']);
+  }
+</script>
+
+</body>
+</html>
